@@ -100,8 +100,11 @@ CREATE TABLE Orders(
 	Product_Number SMALLINT not null FOREIGN KEY REFERENCES Product(Product_Number),
 	Quantity INT not null,
 	Order_Date date);
+/*ORDERS DATA*/
+INSERT INTO Orders
+VALUE
 
-
+	
 /* CART TABLE */
 CREATE TABLE Cart (
     Cart_Number SMALLINT IDENTITY(000001, 1) PRIMARY KEY NOT NULL,
@@ -154,7 +157,6 @@ CREATE TABLE Review (
 
 
 
-INSERT INTO Orders
 
 
 
