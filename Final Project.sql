@@ -188,7 +188,20 @@ CREATE TABLE  Discount(
     Discount_Rate REAL not null,
     Start_Date DATE,
     Expire_Date DATE);
-
+/* DISCOUNT DATA */
+INSERT INTO Discount
+VALUES
+("SR23DECTTM117","12.5%","1-Dec-2023","19-Dec-2023"),
+(),
+(),
+(),
+(),
+("O3TMLI9INB8IG","25%","20*Nov-2023","30-Nov-2023"),
+("PHHPR902T738Z","15%","1-Oct-2023","10-Oct-2023"),
+("Freeship Fashion","10%","26-Sep-2022","31-Sep-2022"),
+("SPPMKPEU1023","20%","17-Oct-2023","31-Dec-2023"),
+("SPPDECP4","30%","29-Dec-2023","4-Jan-2024");
+/* REVIEW TABLE */
 CREATE TABLE Review (
     Review_Number SMALLINT IDENTITY (2001, 1)PRIMARY KEY,
 	Product_Number SMALLINT FOREIGN KEY REFERENCES Product(Product_Number),
@@ -196,6 +209,10 @@ CREATE TABLE Review (
     Rating SMALLINT,
     Date_of_Review DATE,
 );
+
+/* REVIEW DATA */
+INSERT INTO Review
+VALUES
 
 
 
