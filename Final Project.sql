@@ -103,6 +103,16 @@ CREATE TABLE Orders(
 /*ORDERS DATA*/
 INSERT INTO Orders
 VALUE
+(2,"18-Jun-2023"),
+(1,"16-Nov-2023"),
+(2,"14-Dec-2023"),
+(2,"29-Aug-2023"),
+(2,"24-Nov-2023"),
+(2,"27-Nov-2023"),
+(1,"7-Oct-2023"),
+(2,"27-Sep-2022"),
+(4,"8-Oct-2023"),
+(1,"15-May-2023");
 
 	
 /* CART TABLE */
@@ -114,6 +124,19 @@ CREATE TABLE Cart (
     Total_Price REAL,
 );
 
+/* CART DATA */
+INSERT INTO cart
+VALUES
+(2,17200),
+(1,65000),
+(2,143450),
+(2,66500),
+(2,89800),
+(2,370000),
+(1,193000),
+(3,456000),
+(4,789000),
+();
 
 /* SHIPMENT TABLE */
 CREATE TABLE Shipment(
@@ -122,14 +145,39 @@ CREATE TABLE Shipment(
     Delivery_date DATE,
 	Address VARCHAR(50),
     Shipment_Method VARCHAR(10));
-
+/* SHIPMENT DATA */
+INSERT INTO Shipment
+VALUES
+("SPXVN038443313536","21-June-2023","Hai Duong","Fast"),
+("SPXVN038443322071","24-Nov-2023","Hai Duong","Economical"),
+("SPXVN03430656076C","14-Dec-2023","Hai Duong","Fast"),
+("SPXVN034559315418","31-Aug-2023","Hai Duong","Fast"),
+("SPXVN03263749419B","29-Dec-2023","Hai Duong","Fast"),
+("231127NUP2CXJX","28-Nov-2023","Ha Noi","Fast"),
+("FPM4QZMGTHZ3UF","9-Oct-2023","Bac Kan","Fast"),
+("857690674","29-Sep-2022","Hai Duong","Fast"),
+("CO493224","10-Oct-2022","Ha Noi","Fast"),
+("SPXVN036529","17-May-2023","Ha Noi","Fast");
 
 /* PAYMENT TABLE */
 CREATE TABLE  Payment(
     Payment_Number SMALLINT IDENTITY(001,1) PRIMARY KEY not null,  
     Order_Number SMALLINT not null FOREIGN KEY REFERENCES Orders(Order_Number),
     Pay_date DATE,
-    Method VARCHAR(10));
+    Method VARCHAR(20));
+/* PAYMENT DATA */
+INSERT INTO Payment
+VALUES
+("18-June-2023","Banks"),
+("24-Nov-2023","Debit Card"),
+("12-Dec-2023","Banks"),
+("31-Aug-2023","Cash"),
+("24-Nov-2023","Banks"),
+("27-Nov-2023","Banks"),
+("7-Oct-2023","Bank"),
+("29-Sep-2022","Directly"),
+("10-Oct-2022","Directly"),
+("15-May-2023","Banks");
 
 
 /* DISCOUNT TABLE */
