@@ -213,7 +213,16 @@ CREATE TABLE Review (
 /* REVIEW DATA */
 INSERT INTO Review
 VALUES
-(
+(),
+(),
+(),
+(),
+(),
+(),
+(),
+("Chi Linh",5,"31-Sep-2022"),
+("Cao Hung",5,"12-Oct-2022"),
+("Pham Khanh",5,"20-May-2023");
 
 
 
