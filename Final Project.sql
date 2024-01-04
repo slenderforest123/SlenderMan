@@ -48,9 +48,9 @@ VALUES
 CREATE TABLE Sellers (
     Seller_Number SMALLINT IDENTITY(01, 1) PRIMARY KEY,
     Name VARCHAR(50),
-    Phone_number VARCHAR(10),
+    Phone_number VARCHAR(15),
     Address VARCHAR(50),
-    FollowerS INT,
+    Followers INT,
 	Number_of_Products INT,
 );
 
@@ -68,6 +68,9 @@ VALUES
 ('Midori chans', '0879999667', 'Cau Giay, Ha Noi', 3600, 21),
 ('Co Mem Official Store', '1800.646.890', 'Dich Vong Hau, Cau Giay, Ha Noi', 608200, 215);
 
+
+drop table Product
+
 /* PRODUCT TABLE */
 CREATE TABLE Product (
 	Product_Number SMALLINT IDENTITY(01, 1) PRIMARY KEY NOT NULL,
@@ -78,20 +81,23 @@ CREATE TABLE Product (
 	Stock_Quantities SMALLINT,
 );
 
+select * from Sellers
+
 /* PRODUCT DATA */
 INSERT INTO Product
 VALUES
-('Giao trinh triet hoc Mac Lenin', 83000, 20),
-('Keo tan nhiet CPU', 60500, 568),
-('Kinh vien thi Nhat Ban', 143450, 684),
-('Thuoc nhuom toc mau nau', 65000, 1823),
-('Chao chong dinh SUNHOUSE', 99500, 257),
-('Dieu hoa khong khi', 185000, 46),
-('Sach Minecraft Book 4: The end', 193000,72),
-('Chan vay ngan', 109000, 16655),
-('Ao thun cotton', 29000, 9),
-('Son duong gao co mem', 90000, 107597);
+('Giao trinh triet hoc Mac Lenin', 1, 1, 63000, 20),
+('Keo tan nhiet CPU', 2, 2, 60500, 568),
+('Kinh vien thi Nhat Ban', 3, 3, 143450, 684),
+('Thuoc nhuom toc mau nau', 4, 4, 65000, 1823),
+('Chao chong dinh SUNHOUSE', 5, 5, 99500, 257),
+('Dieu hoa khong khi', 6, 6, 185000, 46),
+('Sach Minecraft Book 4: The end', 7, 7, 19300,72),
+('Chan vay ngan', 10900, 8, 8, 16655),
+('Ao thun cotton', 9, 9, 29000, 9),
+('Son duong gao co mem', 10, 10, 90000, 10759);
 
+Select * from Product
 
 /* ORDERS TABLE */
 CREATE TABLE Orders(
@@ -100,6 +106,7 @@ CREATE TABLE Orders(
 	Product_Number SMALLINT not null FOREIGN KEY REFERENCES Product(Product_Number),
 	Quantity INT not null,
 	Order_Date date);
+
 /*ORDERS DATA*/
 INSERT INTO Orders
 VALUE
