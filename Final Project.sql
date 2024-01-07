@@ -68,7 +68,6 @@ VALUES
 ('Midori chans', '0879999667', 'Cau Giay, Ha Noi', 3600, 21),
 ('Co Mem Official Store', '1800.646.890', 'Dich Vong Hau, Cau Giay, Ha Noi', 608200, 215);
 
-
 drop table Product
 
 /* PRODUCT TABLE */
@@ -81,23 +80,21 @@ CREATE TABLE Product (
 	Stock_Quantities SMALLINT,
 );
 
-select * from Sellers
-
 /* PRODUCT DATA */
 INSERT INTO Product
 VALUES
 ('Giao trinh triet hoc Mac Lenin', 1, 1, 63000, 20),
 ('Keo tan nhiet CPU', 2, 2, 60500, 568),
-('Kinh vien thi Nhat Ban', 3, 3, 143450, 684),
+('Kinh vien thi Nhat Ban', 3, 3, 14340, 684),
 ('Thuoc nhuom toc mau nau', 4, 4, 65000, 1823),
-('Chao chong dinh SUNHOUSE', 5, 5, 99500, 257),
-('Dieu hoa khong khi', 6, 6, 185000, 46),
+('Chao chong dinh SUNHOUSE', 5, 5, 9500, 257),
+('Dieu hoa khong khi', 6, 6, 18500, 46),
 ('Sach Minecraft Book 4: The end', 7, 7, 19300,72),
-('Chan vay ngan', 10900, 8, 8, 16655),
+('Chan vay ngan', 8, 8,10900, 1655),
 ('Ao thun cotton', 9, 9, 29000, 9),
-('Son duong gao co mem', 10, 10, 90000, 10759);
+('Son duong gao co mem', 10, 10, 9000, 10759);
 
-Select * from Product
+drop table Orders
 
 /* ORDERS TABLE */
 CREATE TABLE Orders(
@@ -107,19 +104,23 @@ CREATE TABLE Orders(
 	Quantity INT not null,
 	Order_Date date);
 
+select * from Orders
+
+/* I am still working on this table and other tables below */
+
 /*ORDERS DATA*/
 INSERT INTO Orders
-VALUE
-(2,"18-Jun-2023"),
-(1,"16-Nov-2023"),
-(2,"14-Dec-2023"),
-(2,"29-Aug-2023"),
-(2,"24-Nov-2023"),
-(2,"27-Nov-2023"),
-(1,"7-Oct-2023"),
-(2,"27-Sep-2022"),
-(4,"8-Oct-2023"),
-(1,"15-May-2023");
+VALUES
+(2,'18-Jun-2023'),
+(1,'16-Nov-2023'),
+(2,'14-Dec-2023'),
+(2,'29-Aug-2023'),
+(2,'24-Nov-2023'),
+(2,'27-Nov-2023'),
+(1,'7-Oct-2023'),
+(2,'27-Sep-2022'),
+(4,'8-Oct-2023'),
+(1,'15-May-2023');
 
 	
 /* CART TABLE */
