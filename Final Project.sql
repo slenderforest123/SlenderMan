@@ -94,7 +94,6 @@ VALUES
 ('Ao thun cotton', 9, 9, 29000, 9),
 ('Son duong gao co mem', 10, 10, 9000, 10759);
 
-drop table Orders
 
 /* ORDERS TABLE */
 CREATE TABLE Orders(
@@ -104,36 +103,34 @@ CREATE TABLE Orders(
 	Quantity INT not null,
 	Order_Date date);
 
-select * from Orders
-
-/* I am still working on this table and other tables below */
-
 /*ORDERS DATA*/
 INSERT INTO Orders
 VALUES
-(2,'18-Jun-2023'),
-(1,'16-Nov-2023'),
-(2,'14-Dec-2023'),
-(2,'29-Aug-2023'),
-(2,'24-Nov-2023'),
-(2,'27-Nov-2023'),
-(1,'7-Oct-2023'),
-(2,'27-Sep-2022'),
-(4,'8-Oct-2023'),
-(1,'15-May-2023');
+(1, 19, 2, '18-Jun-2023'),
+(2, 15, 1, '16-Nov-2023'),
+(3, 14, 2, '14-Dec-2023'),
+(4, 13, 2, '29-Aug-2023'),
+(5, 12, 2, '24-Nov-2023'),
+(7, 16, 2, '27-Nov-2023'),
+(9, 18, 1, '7-Oct-2023'),
+(6, 17, 2, '27-Sep-2022'),
+(8, 10, 4, '8-Oct-2023'),
+(10, 11, 1, '15-May-2023');
 
-	
+
+/* I am still working on this table and other tables below */
+
 /* CART TABLE */
 CREATE TABLE Cart (
     Cart_Number SMALLINT IDENTITY(000001, 1) PRIMARY KEY NOT NULL,
     Customer_Number SMALLINT FOREIGN KEY REFERENCES Customer(Customer_Number),
-	Order_Number SMALLINT FOREIGN KEY REFERENCES Orders(Order_Number)
+	Order_Number SMALLINT FOREIGN KEY REFERENCES Orders(Order_Number),
     Total_Items SMALLINT,
-    Total_Price REAL,
+    Total_Price REAL
 );
 
 /* CART DATA */
-INSERT INTO cart
+INSERT INTO Cart
 VALUES
 (2,17200),
 (1,65000),
@@ -144,7 +141,7 @@ VALUES
 (1,193000),
 (3,456000),
 (4,789000),
-();
+(5, 456700);
 
 /* SHIPMENT TABLE */
 CREATE TABLE Shipment(
@@ -153,6 +150,7 @@ CREATE TABLE Shipment(
     Delivery_date DATE,
 	Address VARCHAR(50),
     Shipment_Method VARCHAR(10));
+
 /* SHIPMENT DATA */
 INSERT INTO Shipment
 VALUES
