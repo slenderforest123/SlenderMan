@@ -41,7 +41,7 @@ VALUES
 ('Van hoc gia tuong'),
 ('Thoi trang nu'),
 ('Ao phong'),
-('Duong moi');
+('My pham');
 
 
 /* SELLERS TABLE */
@@ -149,21 +149,22 @@ CREATE TABLE Shipment(
     Order_Number SMALLINT FOREIGN KEY REFERENCES Orders(Order_Number),
     Delivery_date DATE,
 	Address VARCHAR(50),
-    Shipment_Method VARCHAR(10));
+    Shipment_Method VARCHAR(10)),
+    Status VARCHAR(10);
 
 /* SHIPMENT DATA */
 INSERT INTO Shipment
 VALUES
-("SPXVN038443313536","21-June-2023","Hai Duong","Fast"),
-("SPXVN038443322071","24-Nov-2023","Hai Duong","Economical"),
-("SPXVN03430656076C","14-Dec-2023","Hai Duong","Fast"),
-("SPXVN034559315418","31-Aug-2023","Hai Duong","Fast"),
-("SPXVN03263749419B","29-Dec-2023","Hai Duong","Fast"),
-("231127NUP2CXJX","28-Nov-2023","Ha Noi","Fast"),
-("FPM4QZMGTHZ3UF","9-Oct-2023","Bac Kan","Fast"),
-("857690674","29-Sep-2022","Hai Duong","Fast"),
-("CO493224","10-Oct-2022","Ha Noi","Fast"),
-("SPXVN036529","17-May-2023","Ha Noi","Fast");
+("SPXVN038443313536","21-June-2023","Hai Duong","Fast", "Complete"),
+("SPXVN038443322071","24-Nov-2023","Hai Duong","Economical", "Completed"),
+("SPXVN03430656076C","14-Dec-2023","Hai Duong","Fast", "Completed"),
+("SPXVN034559315418","31-Aug-2023","Hai Duong","Fast", "Completed"),
+("SPXVN03263749419B","29-Dec-2023","Hai Duong","Fast", "Completed"),
+("231127NUP2CXJX","28-Nov-2023","Ha Noi","Fast", "Completed"),
+("FPM4QZMGTHZ3UF","9-Oct-2023","Bac Kan","Fast", "Completed"),
+("857690674","29-Sep-2022","Hai Duong","Fast", "Completed"),
+("CO493224","10-Oct-2022","Ha Noi","Fast", "Completed"),
+("SPXVN036529","17-May-2023","Ha Noi","Fast", "Completed");
 
 /* PAYMENT TABLE */
 CREATE TABLE  Payment(
@@ -230,10 +231,64 @@ VALUES
 ("Cao Hung",5,"12-Oct-2022"),
 ("Pham Khanh",5,"20-May-2023");
 
-
-
-
-
+--1. Which sellers sell products that belong to a specific category? For example, belong to "My pham"
+SELECT DISTINCT Sellers.SellerName
+FROM Sellers
+WHERE Sellers.SellerNumber IN (
+    SELECT Product.SellerNumber
+    FROM Product
+    WHERE Product.CategoryNumber = 10
+);
+--2. What is the average rating for each product?
+SELECT Pro_Name, AVG(Rating) as AverageRating
+FROM Review
+JOIN Product ON Review.ProductID = Product.ProductNumber
+GROUP BY ProName;
+--3. How many shipments are completed?
+SELECT COUNT(ShipmentNumber) as InTransitShipments
+FROM Shipment
+WHERE Status = 'Completed';
+--4. Which products have received a rating of less than 3 stars?
+SELECT Pro_Name
+FROM Review
+JOIN Product ON Review.ProductID = Product.ProductNumber
+WHERE Rating < 3;
+--5. What is the current stock quantity for each product?
+SELECT Pro_Name, Stock_Quantity
+FROM Product;
+--6. What are the most common payment methods used by customers?
+SELECT PaymentMethod, COUNT(PaymentNumber) as TransactionCount
+FROM Payment
+GROUP BY PaymentMethod
+ORDER BY TransactionCount DESC;
+--7. Which sellers have the highest number of products listed?
+SELECT Name, COUNT(ProductNumber) as ProductCount
+FROM Sellers
+JOIN Product ON Sellers.SellerNumber = Product.SellerNumber
+GROUP BY Name
+ORDER BY ProductCount DESC;
+--8. Create a view to show all products along with their category names and seller information.
+CREATE VIEW ProductView AS
+SELECT Product.Pro_Name, Category.CategoryName, Sellers.SellerName
+FROM Product
+INNER JOIN Category ON Product.CategoryNumber = Category.CategoryNumber
+INNER JOIN Sellers ON Product.SellerNumber = Sellers.SellerNumber;
+--9. Which products have received more than 10 reviews?
+SELECT Product.ProName, COUNT(Review.ReviewNumber) as NumberOfReviews
+FROM Product
+INNER JOIN Review ON Product.ProductNumber = Review.ProductNumber
+GROUP BY Product.ProName
+HAVING COUNT(Review.ReviewNumber) > 10;
+--10. Create a trigger to update the total price in an order after a discount is applied.
+CREATE TRIGGER update_total_price
+ON Discount
+AFTER INSERT
+AS
+BEGIN
+    UPDATE Orders
+    SET TotalPrice = TotalPrice - Discount.DiscountAmount
+    WHERE Orders.OrderNumber = inserted.OrderNumber;
+END;
 
 
 
