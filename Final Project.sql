@@ -32,7 +32,7 @@ CREATE TABLE Category(
 /* CATEGORY DATA */
 INSERT INTO Category
 VALUES
-('Sach giao duc'),
+('Sach Giao duc'),
 ('Phu kien Laptop'),
 ('Kinh vien thi'),
 ('Thuoc nhuom toc'),
@@ -42,8 +42,11 @@ VALUES
 ('Thoi trang nu'),
 ('Ao phong'),
 ('My pham'),
-('Do Choi');
-
+('Do Choi'),
+('Sach Tieng Viet'),
+('Kinh mat'),
+('Phu kien trang suc nu'),
+('Sach Tieng Anh'),	
 
 /* SELLERS TABLE */
 CREATE TABLE Sellers (
@@ -68,7 +71,6 @@ VALUES
 ('viole669', '0865235093', 'Thach That, Ha Noi', 103700, 157),
 ('Midori chans', '0879999667', 'Cau Giay, Ha Noi', 3600, 21),
 ('Co Mem Official Store', '1800.646.890', 'Dich Vong Hau, Cau Giay, Ha Noi', 608200, 215);
-
 ('Hepi Store','091 498 36 58','Trường Chinh, Hanoi, Vietnam',55984,6873);
 ('Shop Minecraft Vn','0981 058 326','đường Láng, Đống Đa, Hà Nội',18964,171);
 drop table Product
@@ -86,23 +88,23 @@ CREATE TABLE Product (
 /* PRODUCT DATA */
 INSERT INTO Product
 VALUES
-('Giao trinh triet hoc Mac Lenin', 1, 1, 63000, 20),
-('Keo tan nhiet CPU', 2, 2, 60500, 568),
-('Kinh vien thi Nhat Ban', 3, 3, 14340, 684),
-('Thuoc nhuom toc mau nau', 4, 4, 65000, 1823),
-('Chao chong dinh SUNHOUSE', 5, 5, 9500, 257),
-('Dieu hoa khong khi', 6, 6, 18500, 46),
-('Sach Minecraft Book 4: The end', 7, 7, 19300,72),
-('Chan vay ngan', 8, 8,10900, 1655),
-('Ao thun cotton', 9, 9, 29000, 9),
-('Son duong gao co mem', 10, 10, 9000, 10759),
-
-	
-	
-('Driver Kamen Rider', 11, 11, 900000, 856),
-('Minecraft Lego Set', 11, 7, 185000, 953),
-('Creeper Plushie', 11, 12, 175000, 11247);
-
+('Giao trinh triet hoc Mac Lenin', 0001, 01, 63000, 20),
+('Keo tan nhiet CPU', 0002, 02, 60500, 568),
+('Kinh vien thi Nhat Ban', 0003, 03, 14340, 684),
+('Thuoc nhuom toc mau nau', 0004, 04, 65000, 1823),
+('Chao chong dinh SUNHOUSE', 0005, 05, 9500, 257),
+('Dieu hoa khong khi', 0006, 06, 18500, 46),
+('Sach Minecraft Book 4: The end', 0007, 07, 19300,72),
+('Chan vay ngan', 0008, 08,10900, 1655),
+('Ao thun cotton', 0009, 09, 29000, 9),
+('Son duong gao co mem', 0010, 10, 9000, 10759),	
+('Driver Kamen Rider', 0011, 11, 900000, 856),
+('Minecraft Lego Set', 0011, 07, 185000, 953),
+('Creeper Plushie', 0011, 12, 175000, 11247),
+('Kinh lao gap gong gon', 0014, 03, 59000, 14),
+('Gong kinh Chrome Heart', 0014, 03, 99000, 14),
+('Quat tan nhiet dien thoai', 0006, 02, 133000, 14),
+('Loi loc nuoc', 0006, 05, 97000, 878);
 
 /* ORDERS TABLE */
 CREATE TABLE Orders(
