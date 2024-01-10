@@ -41,7 +41,8 @@ VALUES
 ('Van hoc gia tuong'),
 ('Thoi trang nu'),
 ('Ao phong'),
-('My pham');
+('My pham'),
+('Do Choi');
 
 
 /* SELLERS TABLE */
@@ -68,6 +69,8 @@ VALUES
 ('Midori chans', '0879999667', 'Cau Giay, Ha Noi', 3600, 21),
 ('Co Mem Official Store', '1800.646.890', 'Dich Vong Hau, Cau Giay, Ha Noi', 608200, 215);
 
+('Hepi Store','091 498 36 58','Trường Chinh, Hanoi, Vietnam',55984,6873);
+('Shop Minecraft Vn','0981 058 326','đường Láng, Đống Đa, Hà Nội',18964,171);
 drop table Product
 
 /* PRODUCT TABLE */
@@ -92,7 +95,13 @@ VALUES
 ('Sach Minecraft Book 4: The end', 7, 7, 19300,72),
 ('Chan vay ngan', 8, 8,10900, 1655),
 ('Ao thun cotton', 9, 9, 29000, 9),
-('Son duong gao co mem', 10, 10, 9000, 10759);
+('Son duong gao co mem', 10, 10, 9000, 10759),
+
+	
+	
+('Driver Kamen Rider', 11, 11, 900000, 856),
+('Minecraft Lego Set', 11, 7, 185000, 953),
+('Creeper Plushie', 11, 12, 175000, 11247);
 
 
 /* ORDERS TABLE */
