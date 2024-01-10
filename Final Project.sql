@@ -184,10 +184,10 @@ VALUES
 ('SPXVN1624001',011,'02-Mar-2023','Thai Binh','Standard');
 /* PAYMENT TABLE */
 CREATE TABLE  Payment(
-    Payment_Number SMALLINT IDENTITY(001,1) PRIMARY KEY not null,  
-    Order_Number SMALLINT not null FOREIGN KEY REFERENCES Orders(Order_Number),
+    Pay_ID SMALLINT IDENTITY(001,1) PRIMARY KEY not null,  
+    Order_ID SMALLINT not null FOREIGN KEY REFERENCES Orders(Order_ID),
     Pay_date DATE,
-    Method VARCHAR(20));
+    Pay_Method VARCHAR(20));
 /* PAYMENT DATA */
 INSERT INTO Payment
 VALUES
