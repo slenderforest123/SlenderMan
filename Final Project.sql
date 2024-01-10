@@ -109,6 +109,7 @@ VALUES
 /* ORDERS TABLE */
 CREATE TABLE Orders(
 	Order_Number SMALLINT IDENTITY (001, 1) PRIMARY KEY not null,
+	Cart_Number SMALLINT NOT NULL FOREIGN KEY REFERENCES Cart(Cart_Number),
 	Customer_Number SMALLINT not null FOREIGN KEY REFERENCES Customer(Customer_Number),
 	Product_Number SMALLINT not null FOREIGN KEY REFERENCES Product(Product_Number),
 	Quantity INT not null,
@@ -117,16 +118,18 @@ CREATE TABLE Orders(
 /*ORDERS DATA*/
 INSERT INTO Orders
 VALUES
-(1, 19, 2, '18-Jun-2023'),
-(2, 15, 1, '16-Nov-2023'),
-(3, 14, 2, '14-Dec-2023'),
-(4, 13, 2, '29-Aug-2023'),
-(5, 12, 2, '24-Nov-2023'),
-(7, 16, 2, '27-Nov-2023'),
-(9, 18, 1, '7-Oct-2023'),
-(6, 17, 2, '27-Sep-2022'),
-(8, 10, 4, '8-Oct-2023'),
-(10, 11, 1, '15-May-2023');
+(01, 07, '18-Jun-2023'),	
+(03, 08, '14-Dec-2023'),		
+(10, 11, '15-May-2023'),			
+(04, 05, '29-Aug-2023'),
+(07, 03, '27-Nov-2023'),		
+(09, 06, '07-Oct-2023'),		
+(02, 02, '16-Nov-2023'),	
+(06, 04, '27-Sep-2024'),
+(08, 10, '08-Oct-2023'),			
+(05, 01, '24-Nov-2023'),		
+(02, 09, '22-Feb-2023');			
+
 
 
 /* I am still working on this table and other tables below */
@@ -143,17 +146,17 @@ CREATE TABLE Cart (
 /* CART DATA */
 INSERT INTO Cart
 VALUES
-(2,17200),
-(1,65000),
-(2,143450),
-(2,66500),
-(2,89800),
-(2,370000),
-(1,193000),
-(3,456000),
-(4,789000),
-(5, 456700);
-
+(01,001,1,93000),
+(02,007,1,60500),
+(02,011,1,290000),
+(03,002,2,238000),
+(04,004,1,95000),
+(05,010,1,63000),
+(06,008,1,65000),
+(07,005,1,434000),
+(08,009,1,900000),
+(09,006,1,18500000),
+(10,003,3,333000);
 /* SHIPMENT TABLE */
 CREATE TABLE Shipment(
     Shipment_ID VARCHAR(30) PRIMARY KEY NOT NULL,
@@ -166,17 +169,19 @@ CREATE TABLE Shipment(
 /* SHIPMENT DATA */
 INSERT INTO Shipment
 VALUES
-("SPXVN038443313536","21-June-2023","Hai Duong","Fast", "Complete"),
-("SPXVN038443322071","24-Nov-2023","Hai Duong","Economical", "Completed"),
-("SPXVN03430656076C","14-Dec-2023","Hai Duong","Fast", "Completed"),
-("SPXVN034559315418","31-Aug-2023","Hai Duong","Fast", "Completed"),
-("SPXVN03263749419B","29-Dec-2023","Hai Duong","Fast", "Completed"),
-("231127NUP2CXJX","28-Nov-2023","Ha Noi","Fast", "Completed"),
-("FPM4QZMGTHZ3UF","9-Oct-2023","Bac Kan","Fast", "Completed"),
-("857690674","29-Sep-2022","Hai Duong","Fast", "Completed"),
-("CO493224","10-Oct-2022","Ha Noi","Fast", "Completed"),
-("SPXVN036529","17-May-2023","Ha Noi","Fast", "Completed");
-
+INSERT INTO Shipment
+VALUES
+('SPXVN0384433',001,'21-Jun-2023','Hai Duong','Fast'),
+('SPXVN0178039',002,'24-Dec-2023','Hai Phong','Standard'),
+('SPXVN0343065',003,'20-May-2023','Hai Duong','Fast'),
+('SPXVN1255593',004,'31-Aug-2023','Hung Yen','Standard'),
+('SPXVN0026377',005,'02-Dec-2023','Thanh Hoa','Fast'),
+('SPXVN1637826',006,'17-Oct-2023','Ha Noi','Standard'),
+('SPXVN0293462',007,'29-Nov-2023','Thai Binh','Fast'),
+('SPXVN7846374',008,'30-Sep-2023','Ha Noi','Fast'),
+('SPXVN2867626',009,'15-Oct-2023','Ha Duong','Standard'),
+('SPXVN0365290',010,'30-Nov-2023','Bac Giang','Fast'),
+('SPXVN1624001',011,'02-Mar-2023','Thai Binh','Standard');
 /* PAYMENT TABLE */
 CREATE TABLE  Payment(
     Payment_Number SMALLINT IDENTITY(001,1) PRIMARY KEY not null,  
@@ -186,17 +191,16 @@ CREATE TABLE  Payment(
 /* PAYMENT DATA */
 INSERT INTO Payment
 VALUES
-("18-June-2023","Banks"),
-("24-Nov-2023","Debit Card"),
-("12-Dec-2023","Banks"),
-("31-Aug-2023","Cash"),
-("24-Nov-2023","Banks"),
-("27-Nov-2023","Banks"),
-("7-Oct-2023","Bank"),
-("29-Sep-2022","Directly"),
-("10-Oct-2022","Directly"),
-("15-May-2023","Banks");
-
+(001,'18-Jun-2023','Credit Card'),
+(007,'29-Nov-2023','Debit Card'),
+(002,'24-Dec-2023','Cash'),
+(004,'29-Aug-2023','Mobile Wallet'),
+(010,'24-Nov-2023','Debit Card'),
+(005,'02-Dec-2023','Credit Card'),
+(009,'15-Oct-2023','Cash'),
+(006,'07-Oct-2023','Mobile Wallet'),
+(011,'22-Feb-2023','Credit Card'),
+(003,'15-May-2023','Mobile Wallet')
 
 /* DISCOUNT TABLE */
 CREATE TABLE  Discount(
@@ -209,16 +213,17 @@ CREATE TABLE  Discount(
 /* DISCOUNT DATA */
 INSERT INTO Discount
 VALUES
-("SR23DECTTM117","12.5%","1-Dec-2023","19-Dec-2023"),
-(),
-(),
-(),
-(),
-("O3TMLI9INB8IG","25%","20*Nov-2023","30-Nov-2023"),
-("PHHPR902T738Z","15%","1-Oct-2023","10-Oct-2023"),
-("Freeship Fashion","10%","26-Sep-2022","31-Sep-2022"),
-("SPPMKPEU1023","20%","17-Oct-2023","31-Dec-2023"),
-("SPPDECP4","30%","29-Dec-2023","4-Jan-2024");
+('SR23CTTM117',08,'12.5%','1-Dec-2023','19-Dec-2023'),
+('O3TMLI8IG',03,'5%','20*Nov-2023','30-Nov-2023'),
+('PAHPR902T8Z',06,'15%','01-Oct-2023','10-Oct-2023'),
+('SCEEJ635GM',04,'10%','26-Sep-2023','31-Sep-2023'),
+('SPPMKPEU23',01,'20%','17-Nov-2023','31-Dec-2023'),
+('SPPDECP4ML',09,'30%','20-Feb-2023','25-Feb-2023'),
+('SPDM948501',11,'10%','01-May-2023','20-May-2023'),
+('VN34SPFHHK',05,'5%','29-Aug-2023','15-Sep-2023'),
+('MS33KYUID',10,'50%','01-Oct-2023','10-Oct-2023'),
+('SP758FKSG',07,'5%','15-Jun-2023','30-Jun-2023'),
+('GIAM150GL',02,'15%','5-Nov-2023','20-Nov-2023');
 /* REVIEW TABLE */
 CREATE TABLE Review (
     Review_Number SMALLINT IDENTITY (2001, 1)PRIMARY KEY,
