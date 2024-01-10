@@ -171,7 +171,7 @@ INSERT INTO Shipment
 VALUES
 INSERT INTO Shipment
 VALUES
-('SPXVN0384433',001,'21-Jun-2023','Hai Duong','Fast', 'Completed),
+('SPXVN0384433',001,'21-Jun-2023','Hai Duong','Fast', 'Completed'),
 ('SPXVN0178039',002,'24-Dec-2023','Hai Phong','Standard', 'Completed'),
 ('SPXVN0343065',003,'20-May-2023','Hai Duong','Fast', 'Completed'),
 ('SPXVN1255593',004,'31-Aug-2023','Hung Yen','Standard', 'Completed'),
