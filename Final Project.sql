@@ -43,11 +43,11 @@ VALUES
 ('Ao phong'),
 ('My pham'),
 ('Do Choi'),
-('Suc khoe')
+('Suc khoe'),
 ('Sach Tieng Viet'),
 ('Kinh mat'),
 ('Phu kien trang suc nu'),
-('Sach Tieng Anh'),	
+('Sach Tieng Anh');
 
 /* SELLERS TABLE */
 CREATE TABLE Sellers (
@@ -71,11 +71,11 @@ VALUES
 ('FAHASHA', '1900636467', 'Hai Ba Trung, TP.HCM', 375900, 77200),
 ('viole669', '0865235093', 'Thach That, Ha Noi', 103700, 157),
 ('Midori chans', '0879999667', 'Cau Giay, Ha Noi', 3600, 21),
-('Co Mem Official Store', '1800.646.890', 'Dich Vong Hau, Cau Giay, Ha Noi', 608200, 215);
+('Co Mem Official Store', '1800.646.890', 'Dich Vong Hau, Cau Giay, Ha Noi', 608200, 215),
 ('Mars Petcare', ' 0378195546','Dong Da,Ha Noi',23133,45),			
-('Hepi Store','091 498 36 58','Trường Chinh, Hanoi, Vietnam',55984,6873);
+('Hepi Store','091 498 36 58','Trường Chinh, Hanoi, Vietnam',55984,6873),
 ('Shop Minecraft Vn','0981 058 326','đường Láng, Đống Đa, Hà Nội',18964,171);
-drop table Product
+
 
 /* PRODUCT TABLE */
 CREATE TABLE Product (
@@ -100,7 +100,7 @@ VALUES
 ('Chan vay ngan', 0008, 08,10900, 1655),
 ('Ao thun cotton', 0009, 09, 29000, 9),
 ('Son duong gao co mem', 0010, 10, 9000, 10759),
-('Thuc an cho meo',0009,11,111000,4675);
+('Thuc an cho meo',0009,11,111000,4675),
 ('Driver Kamen Rider', 0011, 11, 900000, 856),
 ('Minecraft Lego Set', 0011, 07, 185000, 953),
 ('Creeper Plushie', 0011, 12, 175000, 11247),
@@ -163,12 +163,10 @@ CREATE TABLE Shipment(
     Order_ID SMALLINT FOREIGN KEY REFERENCES Orders(Order_ID),
     Delivery_date DATE,
     Ship_Address VARCHAR(50),
-    Shipment_Method VARCHAR(10));
-    Status VARCHAR(10);
+    Shipment_Method VARCHAR(10),
+    Status VARCHAR(10));
 
 /* SHIPMENT DATA */
-INSERT INTO Shipment
-VALUES
 INSERT INTO Shipment
 VALUES
 ('SPXVN0384433',001,'21-Jun-2023','Hai Duong','Fast', 'Completed'),
@@ -178,10 +176,10 @@ VALUES
 ('SPXVN0026377',005,'02-Dec-2023','Thanh Hoa','Fast', 'Completed'),
 ('SPXVN1637826',006,'17-Oct-2023','Ha Noi','Standard', 'Completed'),
 ('SPXVN0293462',007,'29-Nov-2023','Thai Binh','Fast', 'Completed'),
-('SPXVN7846374',008,'30-Sep-2023','Ha Noi','Fast', ),
-('SPXVN2867626',009,'15-Oct-2023','Ha Duong','Standard'),
-('SPXVN0365290',010,'30-Nov-2023','Bac Giang','Fast'),
-('SPXVN1624001',011,'02-Mar-2023','Thai Binh','Standard');
+('SPXVN7846374',008,'30-Sep-2023','Ha Noi','Fast', 'Completed'),
+('SPXVN2867626',009,'15-Oct-2023','Ha Duong','Standard','Completed'),
+('SPXVN0365290',010,'30-Nov-2023','Bac Giang','Fast','Completed'),
+('SPXVN1624001',011,'02-Mar-2023','Thai Binh','Standard','Completed');
 /* PAYMENT TABLE */
 CREATE TABLE  Payment(
     Pay_ID SMALLINT IDENTITY(001,1) PRIMARY KEY not null,  
@@ -200,7 +198,7 @@ VALUES
 (009,'15-Oct-2023','Cash'),
 (006,'07-Oct-2023','Mobile Wallet'),
 (011,'22-Feb-2023','Credit Card'),
-(003,'15-May-2023','Mobile Wallet')
+(003,'15-May-2023','Mobile Wallet');
 
 /* DISCOUNT TABLE */
 CREATE TABLE  Discount(
@@ -212,105 +210,94 @@ CREATE TABLE  Discount(
 /* DISCOUNT DATA */
 INSERT INTO Discount
 VALUES
-('SR23CTTM117',08,'12.5%','1-Dec-2023','19-Dec-2023'),
-('O3TMLI8IG',03,'5%','20*Nov-2023','30-Nov-2023'),
-('PAHPR902T8Z',06,'15%','01-Oct-2023','10-Oct-2023'),
-('SCEEJ635GM',04,'10%','26-Sep-2023','31-Sep-2023'),
-('SPPMKPEU23',01,'20%','17-Nov-2023','31-Dec-2023'),
-('SPPDECP4ML',09,'30%','20-Feb-2023','25-Feb-2023'),
-('SPDM948501',11,'10%','01-May-2023','20-May-2023'),
-('VN34SPFHHK',05,'5%','29-Aug-2023','15-Sep-2023'),
-('MS33KYUID',10,'50%','01-Oct-2023','10-Oct-2023'),
-('SP758FKSG',07,'5%','15-Jun-2023','30-Jun-2023'),
-('GIAM150GL',02,'15%','5-Nov-2023','20-Nov-2023');
+('SR23CTTM117',08,0.125,'2023-12-01','2023-12-19'),
+('O3TMLI8IG',03,0.05,'2023-11-20','2023-11-30'),
+('PAHPR902T8Z',06,0.15,'2023-10-01','2023-10-10'),
+('SCEEJ635GM',04,0.10,'2023-09-26','2023-09-30'),
+('SPPMKPEU23',01,0.20,'2023-11-17','2023-12-31'),
+('SPPDECP4ML',09,0.30,'2023-02-20','2023-02-25'),
+('SPDM948501',11,0.10,'2023-05-01','2023-05-20'),
+('VN34SPFHHK',05,0.05,'2023-08-29','2023-09-15'),
+('MS33KYUID',10,0.50,'2023-10-01','2023-10-10'),
+('SP758FKSG',07,0.05,'2023-06-15','2023-06-30'),
+('GIAM150GL',02,0.15,'2023-11-05','2023-11-20');
+
 /* REVIEW TABLE */
 CREATE TABLE Review (
     Review_ID SMALLINT IDENTITY (2001, 1)PRIMARY KEY,
-    Cust_ID SMALLINT FOREIGN KEY REFERENCES Customer(Cus_ID)
+    Cust_ID SMALLINT FOREIGN KEY REFERENCES Customer(Cus_ID),
     Pro_ID SMALLINT FOREIGN KEY REFERENCES Product(Pro_ID),
-    Rating SMALLINT,
-    Date_of_Review DATE,
+    Rating REAL,
+    Date_of_Review DATE
 );
 /* REVIEW DATA */
 INSERT INTO Review
 VALUES
-(01, 01, 5.0, "29-Sep-2023"),
-(02, 01, 2.3, "31-Oct-2023"),
-(03, 01, 4.0, "02-Nov-2023"),
-(03, 02, 3.2, "03-Jul-2023"),
-(04, 01, 2.9, "04-Nov-2023"),
-(04, 03, 3.7, "03-Dec-2023"),
-(06, 06, 3.8, "06-Jun-2023"),
-(08, 08,5.0,"31-Sep-2022"),
-(09, 09,"Cao Hung",5,"12-Oct-2022"),
-(10, 10,"Pham Khanh",5,"20-May-2023");
+(01, 01, 5.0, '2023-09-29'),
+(02, 01, 2.3, '2023-10-31'),
+(03, 01, 4.0, '2023-02-11'),
+(03, 02, 3.2, '2023-07-03'),
+(04, 01, 2.9, '2023-11-04'),
+(04, 03, 3.7, '2023-12-03'),
+(06, 06, 3.8, '2023-06-06'),
+(08, 08, 5.0, '2022-09-28'),
+(09, 09, 5.0, '2022-10-12'),
+(10, 10, 5.0, '2023-05-20');
 
 --1. Which sellers sell products that belong to a specific category? For example, belong to "My pham"
-SELECT DISTINCT Sellers.SellerName
+SELECT DISTINCT Sellers.Sell_Name
 FROM Sellers
-WHERE Sellers.SellerNumber IN (
-    SELECT Product.SellerNumber
+WHERE Sellers.Sell_ID IN (
+    SELECT Product.Sell_ID
     FROM Product
-    WHERE Product.CategoryNumber = 10
+    WHERE Product.Category_ID = 9
 );
 --2. What is the average rating for each product?
 SELECT Pro_Name, AVG(Rating) as AverageRating
 FROM Review
-JOIN Product ON Review.ProductID = Product.ProductNumber
-GROUP BY ProName;
+JOIN Product ON Review.Pro_ID = Product.Pro_ID
+GROUP BY Pro_Name;
 --3. How many shipments are completed?
-SELECT COUNT(ShipmentNumber) as InTransitShipments
+SELECT COUNT(Ship_ID) as CompletedShipments
 FROM Shipment
 WHERE Status = 'Completed';
 --4. Which products have received a rating of less than 3 stars?
 SELECT Pro_Name
 FROM Review
-JOIN Product ON Review.ProductID = Product.ProductNumber
+JOIN Product ON Review.Pro_ID = Product.Pro_ID
 WHERE Rating < 3;
 --5. What is the current stock quantity for each product?
-SELECT Pro_Name, Stock_Quantity
+SELECT Pro_Name, Stock_Quantities
 FROM Product;
 --6. What are the most common payment methods used by customers?
-SELECT PaymentMethod, COUNT(PaymentNumber) as TransactionCount
+SELECT Pay_Method, COUNT(Pay_ID) as TransactionCount
 FROM Payment
-GROUP BY PaymentMethod
+GROUP BY Pay_Method
 ORDER BY TransactionCount DESC;
 --7. Which sellers have the highest number of products listed?
-SELECT Name, COUNT(ProductNumber) as ProductCount
+SELECT Sell_Name, COUNT(Product.Pro_Name) as ProductCount
 FROM Sellers
-JOIN Product ON Sellers.SellerNumber = Product.SellerNumber
-GROUP BY Name
+JOIN Product ON Sellers.Sell_ID = Product.Sell_ID
+GROUP BY Sell_Name
 ORDER BY ProductCount DESC;
 --8. Create a view to show all products along with their category names and seller information.
-CREATE VIEW ProductView AS
-SELECT Product.Pro_Name, Category.CategoryName, Sellers.SellerName
-FROM Product
-INNER JOIN Category ON Product.CategoryNumber = Category.CategoryNumber
-INNER JOIN Sellers ON Product.SellerNumber = Sellers.SellerNumber;
---9. Which products have received more than 10 reviews?
-SELECT Product.ProName, COUNT(Review.ReviewNumber) as NumberOfReviews
-FROM Product
-INNER JOIN Review ON Product.ProductNumber = Review.ProductNumber
-GROUP BY Product.ProName
-HAVING COUNT(Review.ReviewNumber) > 10;
---10. Create a trigger to update the total price in an order after a discount is applied.
-CREATE TRIGGER update_total_price
-ON Discount
-AFTER INSERT
+CREATE VIEW ProductView 
+
 AS
-BEGIN
-    UPDATE Orders
-    SET TotalPrice = TotalPrice - Discount.DiscountAmount
-    WHERE Orders.OrderNumber = inserted.OrderNumber;
-END;
-
-
-
-
-
-
-
-
-
-
-
+SELECT Product.Pro_Name, Category.Category_Name, Sellers.Sell_Name
+FROM Product
+INNER JOIN Category ON Product.Category_ID = Category.Category_ID
+INNER JOIN Sellers ON Product.Sell_ID = Sellers.Sell_ID;
+GO
+--9. Which products have received more than 10 reviews?
+SELECT Product.Pro_Name, COUNT(Review.Review_ID) as NumberOfReviews
+FROM Product
+INNER JOIN Review ON Product.Pro_ID = Review.Pro_ID
+GROUP BY Product.Pro_Name
+HAVING COUNT(Review.Review_ID) > 2;
+--10. Create a trigger to update the total price in an order after a discount is applied.
+CREATE TRIGGER record_review_time 
+ON Review 
+AFTER INSERT 
+AS 
+UPDATE Review SET Date_of_Review = GETDATE() WHERE Review_ID IN (SELECT Review_ID FROM inserted);
